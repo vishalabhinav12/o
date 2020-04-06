@@ -1,0 +1,97 @@
+
+
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize,word_tokenize, regexp_tokenize
+from nltk.stem import PorterStemmer,LancasterStemmer
+from nltk.stem.snowball import snowballStemmer
+myString="This is 1 a paragraph. It should split at the end of sentence marker.Run it!"
+tokenized_sentence=sent_tokenize(myString)
+print(tokenized_sentence)
+print(myString.split())
+print(word_tokenize(myString))
+print(regexp_tokenize(myString,pattern="\w+"))
+print(regexp_tokenize(myString,pattern="\d+"))
+porter=PorterStemmer()
+print(porter.stem("cutting"))
+lancaster=LancasterStemmer()
+print(lancaster.stem("sleeping"))
+snowball=snowballStemmer("english")
+print(snowball.stem("driving"))
+
+
+
+
+import nltk
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+
+print("rocks :", lemmatizer.lemmatize("rocks"))
+print("corpora :", lemmatizer.lemmatize("corpora"))
+print("better :", lemmatizer.lemmatize("better",pos ="a"))
+
+
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+from nltk.tokenize import regexp_tokenize
+myString="This is 1 sentence.,This is 2 sentence,This is 3 sentence"
+print(regexp_tokenize(myString,pattern="\w+"))
+print(regexp_tokenize(myString,pattern="\d+"))
+print(tokenized_sentence)
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
+from nltk.tokenize import regexp_tokenize
+myString="This is 1 sentence.,This is 2 sentence,This is 3 sentence"
+tokenized_sentence=sent_tokenize(myString)
+print(tokenized_sentence)
+
+
+
+
+from nltk.parse import RecursiveDescentParser
+rd = RecursiveDescentParser(grammar)
+sentence1 = 'the cat chased the dog'.split()
+sentence2 = 'the cat chased the dog on the rug'.split()
+for t in rd.parse(sentence1):
+    print(t)
+for t in rd.parse(sentence2):
+    print(t)    
+
+
+
+
+
+
+import nltk import CFG
+import nltk
+grammer = CFG.fromstring("""
+S -> NP VP
+PP -> P NP
+NP ->'the' N | N PP | 'the' N PP
+VP -> V NP | V PP | V NP PP
+N ->'cat'
+N ->'dog'
+N ->'rug'
+V ->'chased'
+V ->'sat'
+P ->'in'
+P ->'on'
+""")
